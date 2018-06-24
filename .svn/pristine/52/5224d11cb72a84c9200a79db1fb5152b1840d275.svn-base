@@ -1,0 +1,13 @@
+package shun.dao.impl;
+
+
+import shun.dao.CustomerDao;
+import shun.domain.Customer;
+
+/**
+ * @author czs
+ * @version 创建时间：2018年2月23日 下午10:34:30
+ */
+public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDao {
+ 
+}

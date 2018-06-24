@@ -1,0 +1,36 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 分别是数据库驱动、url、用户名、密码 -->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql:///18-02-22-ssh框架整合</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">1234</property>
+		
+		<!-- 指定session与当前线程绑定，就像ThreadLocal绑定的connection一样 -->
+		<!-- 由于需要在service层与dao层操作同一个session，所以不得不进行这种操作 --> 
+		<!-- 千万不要配置这个，spring已经弄好这些了 -->
+		<!-- <property name="hibernate.current_session_context_class">thread</property> -->
+		
+		<!-- spring已经配置好了，不用配置事务级别了，配置可能冲突 -->
+		<!-- <property name="hibernate.connection.isolation">4</property> -->
+		
+		
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		
+		<property name="hibernate.show_sql">true</property>
+		
+		<property name="hibernate.format_sql">true</property> 
+		
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+
+		<!-- 引入orm元素，它的路径书写：填写src下的路径，以src作为根目录 -->
+		<mapping resource="shun/domain/Linkman.hbm.xml" />
+		<mapping resource="shun/domain/Customer.hbm.xml" /> 
+		<mapping resource="shun/domain/User.hbm.xml" /> 
+	</session-factory>
+</hibernate-configuration>
+

@@ -1,0 +1,51 @@
+package shun.action;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+import shun.domain.User;
+import shun.service.UserService;
+
+/**
+* @author czs
+* @version 创建时间：2018年2月22日 下午1:00:09 
+*/
+public class UserAction extends ActionSupport implements ModelDriven<User>{
+
+	private UserService userService;
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	private static final long serialVersionUID = 1203350742782158812L;
+	
+	@Override
+	public String execute() throws Exception {
+		System.out.println(userService);
+		return super.execute();
+	}
+
+	public String login() throws Exception {
+		// 1 调用Service执行登陆逻辑
+		User u = userService.getUserByCodePassword(user);
+		
+		// 2 将返回的User对象放入session域
+		ActionContext.getContext().getSession().put("user", u);
+		
+		// 3 重定向道项目首页
+		return "toHome";
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	private User user = new User();
+
+	@Override
+	public User getModel() {
+		return user;
+	}
+}

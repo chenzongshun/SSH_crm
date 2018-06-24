@@ -1,0 +1,21 @@
+package shun.service;
+
+import org.hibernate.criterion.DetachedCriteria;
+import shun.utils.PageBean;
+
+/**
+* @author czs
+* @version 创建时间：2018年2月23日 下午10:09:11 
+*/
+public interface CustomerService {
+
+	/**
+	 * 分页业务方法
+	 * @param dc  
+	 * @param currentPage 
+	 * @param pageSize
+	 * @return
+	 */
+	PageBean getPageBean(DetachedCriteria dc, Integer currentPage, Integer pageSize);
+
+}

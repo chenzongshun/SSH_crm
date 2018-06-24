@@ -1,0 +1,5 @@
+jdbc.jdbcUrl=jdbc:mysql:///18-02-22-ssh\u6846\u67B6\u6574\u5408
+jdbc.driverClass=com.mysql.jdbc.Driver
+jdbc.user=root
+jdbc.password=1234
+
